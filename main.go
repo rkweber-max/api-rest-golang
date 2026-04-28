@@ -2,20 +2,17 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+
+	"github.com/rkweber-max/api-rest-golang/models"
+	"github.com/rkweber-max/api-rest-golang/routes"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Home Page")
-	log.Fatal(":8000", nil)
-}
-
-func HandleRequest() {
-	http.HandleFunc("/", Home)
-}
-
 func main() {
+	models.Personalities = []models.Personality{
+		{Name: "Test 1", History: "Teste 12"},
+		{Name: "Test 2", History: "Teste 21"},
+	}
+
 	fmt.Println("Starting rest serve in Go")
-	HandleRequest()
+	routes.HandleRequest()
 }
