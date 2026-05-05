@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/rkweber-max/api-rest-golang/database"
 	"github.com/rkweber-max/api-rest-golang/models"
 )
 
@@ -15,6 +16,8 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllPersonalities(w http.ResponseWriter, r *http.Request) {
+	var p []models.Personality
+	database.DB.Find(&p)
 	json.NewEncoder(w).Encode(models.Personalities)
 }
 
