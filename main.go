@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/rkweber-max/api-rest-golang/database"
 	"github.com/rkweber-max/api-rest-golang/models"
 	"github.com/rkweber-max/api-rest-golang/routes"
 )
@@ -12,6 +13,8 @@ func main() {
 		{Id: 1, Name: "Test 1", History: "Teste 12"},
 		{Id: 2, Name: "Test 2", History: "Teste 21"},
 	}
+
+	database.ConnectDatabase()
 
 	fmt.Println("Starting rest serve in Go")
 	routes.HandleRequest()
